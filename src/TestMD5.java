@@ -27,7 +27,7 @@ public class TestMD5 {
 //        }
 
 
-        Integer number1 = hashtext.hashCode();
+        byte[] number1 = hashtext.getBytes();
         System.out.println(number1);
         return hashtext;
     }
@@ -45,7 +45,7 @@ public class TestMD5 {
         try {
             md = MessageDigest.getInstance("MD5");
             byte[] messageDigrest = md.digest(input.getBytes());
-
+            System.out.println(messageDigrest);
             return convertByteToHex1(messageDigrest);
         } catch (NoSuchAlgorithmException ex) {
             ex.printStackTrace();
@@ -71,8 +71,5 @@ public class TestMD5 {
 
     public static void main(String[] args) {
         System.out.println(getMD5("password"));
-        System.out.println(getMD5("passwor"));
-        System.out.println(getMD52("passwor"));
-
     }
 }
