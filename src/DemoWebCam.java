@@ -1,24 +1,66 @@
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
+import org.opencv.core.MatOfByte;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.videoio.VideoCapture;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 /**
  *
  * @author ppolo
  */
 public class DemoWebCam extends javax.swing.JFrame {
 
+    private boolean clicked = false;
+
     /**
      * Creates new form DemoWebCame
      */
     public DemoWebCam() {
         initComponents();
+        Thread th1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                startCame();
+            }
+        });
+        th1.start();
+    }
+
+    private void startCame() {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        VideoCapture capture = new VideoCapture(0);
+        Mat image = new Mat();
+        byte[] imageData;
+        while (true) {
+            capture.read(image);
+
+            final MatOfByte buf = new MatOfByte();
+            Imgcodecs.imencode(".jpg", image, buf);
+
+            imageData = buf.toArray();
+            ImageIcon icon = new ImageIcon(imageData);
+            this.screen.setIcon(icon);
+
+            if (clicked) {
+                String name = JOptionPane.showInputDialog(this, "Enter the image name");
+                if (name == null) {
+                    name = new SimpleDateFormat("yyy-mm-dd-hh-mm-ss").format(new Date());
+                }
+                //Write to file
+                    Imgcodecs.imwrite("images/" + name + ".jpg", image);
+                System.out.println("Thành công");
+                clicked = false;
+            }
+        }
     }
 
     /**
@@ -30,12 +72,12 @@ public class DemoWebCam extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        screen = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("jLabel1");
+        screen.setText("jLabel1");
 
         jButton1.setText("Open");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -49,32 +91,29 @@ public class DemoWebCam extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jButton1)))
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addGap(263, 263, 263)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(screen, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(23, 23, 23)
+                .addComponent(screen, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(81, 81, 81))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-        Mat mat = Mat.eye(3, 3, CvType.CV_8UC1);
-        System.out.println(mat.dump());
+        clicked = true;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -115,6 +154,6 @@ public class DemoWebCam extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel screen;
     // End of variables declaration//GEN-END:variables
 }
