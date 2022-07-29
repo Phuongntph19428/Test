@@ -42,7 +42,7 @@ public class ReadQrCode {
         
         hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
         
-        System.out.println(readQRCode("D:\\FPTPolytechnic\\1_Spring22\\MOB1023\\Test1\\test\\TestQRCode",
+        System.out.println(readQRCode("D:\\FPTPolytechnic\\1_Spring22\\MOB1023\\Test1\\test\\TestQRCode.png",
                 "UTF-8", hashMap));
     }
 }
