@@ -17,26 +17,25 @@ import java.util.List;
  * @author ppolo
  */
 public class Services {
-    
+
     List<TestImage> _list;
     ConnectToDB con = new ConnectToDB();
 
     public Services() {
         _list = new ArrayList<>();
     }
-    
-    public int add(TestImage image) throws SQLException, FileNotFoundException{
+
+    public int add(TestImage image) throws SQLException, FileNotFoundException {
         Connection conn = con.connect();
         System.out.println("Connected");
         String query = "INSERT INTO [Image](ID, anh) VALUES (?, ?)";
-        
+
         PreparedStatement pstm = conn.prepareStatement(query);
         pstm.setString(1, image.getId() + "");
         pstm.setBytes(2, image.getAnh());
         ResultSet rs = pstm.executeQuery();
-        
+
         return rs.getRow();
-    }    
-    
-    
+    }
+
 }

@@ -21,7 +21,7 @@ public class LoginJFrame extends javax.swing.JFrame {
     public LoginJFrame() {
         initComponents();
         remember();
-        
+
     }
 
     private void remember() {
@@ -105,14 +105,13 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        if(RememberMe.isSelected() && !remember){
+        if (RememberMe.isSelected() && !remember) {
             preference.put("User", user.getText());
             preference.put("Pass", pass.getText());
             preference.putBoolean("RememberMe", true);
-            
-        }
-        else{
-             preference.put("User", "");
+
+        } else {
+            preference.put("User", "");
             preference.put("Pass", "");
             preference.putBoolean("RememberMe", false);
         }

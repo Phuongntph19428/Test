@@ -9,6 +9,7 @@ package testList;
  * @author ppolo
  */
 public class SV {
+
     private int id;
     private String diem;
 
@@ -35,12 +36,10 @@ public class SV {
     public void setDiem(String diem) {
         this.diem = diem;
     }
-    
 
     @Override
     public String toString() {
         return "SV{" + "id=" + id + ", diem=" + diem + '}';
     }
-    
-    
+
 }

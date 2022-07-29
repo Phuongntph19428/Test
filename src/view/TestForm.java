@@ -224,9 +224,8 @@ public class TestForm extends javax.swing.JFrame {
         jPanel6.setVisible(false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
-
-        TestJPanel jpnel = new TestJPanel();
-        TestJPanel2 jpnel2 = new TestJPanel2();
+    TestJPanel jpnel = new TestJPanel();
+    TestJPanel2 jpnel2 = new TestJPanel2();
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
@@ -238,7 +237,7 @@ public class TestForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
+
         jPanel7.setVisible(false);
         jPanel6.setVisible(false);
         jpnel2.setVisible(true);

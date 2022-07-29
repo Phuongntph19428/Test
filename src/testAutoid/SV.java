@@ -51,6 +51,6 @@ public class SV implements Serializable {
     @Override
     public String toString() {
         return "SV{" + "id=" + id + ", name=" + name + '}';
-    }    
+    }
 
 }

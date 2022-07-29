@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * @author ppolo
  */
 public class Test extends javax.swing.JFrame {
-    
+
     private Services _lstSV;
 
     /**
@@ -160,7 +160,7 @@ public class Test extends javax.swing.JFrame {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnGetAllActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -18,14 +18,11 @@ public class TestMD5 {
     public static String convertByteToHex1(byte[] data) {
         BigInteger number = new BigInteger(1, data);
 
-
-
         String hashtext = number.toString(16);
 //        while (hashtext.length() < 32) {
 //            hashtext = "0" + hashtext;
 //
 //        }
-
 
         byte[] number1 = hashtext.getBytes();
         System.out.println(number1);
@@ -56,7 +53,6 @@ public class TestMD5 {
 //    public static String nguoc(String input) {
 //        String 
 //    }
-
     public static String getMD52(String input) {
         MessageDigest md;
         try {

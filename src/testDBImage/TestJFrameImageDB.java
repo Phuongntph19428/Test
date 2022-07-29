@@ -192,7 +192,7 @@ public class TestJFrameImageDB extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnLoadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadActionPerformed
@@ -226,11 +226,11 @@ public class TestJFrameImageDB extends javax.swing.JFrame {
             }
         });
 
-        if(chooser.showOpenDialog(this) == JFileChooser.CANCEL_OPTION){
+        if (chooser.showOpenDialog(this) == JFileChooser.CANCEL_OPTION) {
             return;
         }
         File file = chooser.getSelectedFile();
-        
+
         ImageIcon icon = new ImageIcon(file.getPath());
         Image img = ImageReSize.resize(icon.getImage(), lblImage.getWidth(), lblImage.getHeight());
         ImageIcon afterIcon = new ImageIcon(img);

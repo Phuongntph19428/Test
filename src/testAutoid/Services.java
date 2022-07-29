@@ -41,7 +41,7 @@ public class Services {
             SV.count = _lstSV.get(_lstSV.size() - 1).getId();
             System.out.println("Đã set count = " + SV.count);
         }
-        
+
         _lstSV.add(sv);
         System.out.println("ADD: " + sv.toString());
     }
@@ -68,7 +68,7 @@ public class Services {
             var temp = ois.readObject();
             _lstSV.add((SV) temp);
         }
-        System.out.println("SL SV: "+_lstSV.size());
+        System.out.println("SL SV: " + _lstSV.size());
         for (SV sv : _lstSV) {
             System.out.println(sv);
         }

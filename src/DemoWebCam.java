@@ -56,7 +56,7 @@ public class DemoWebCam extends javax.swing.JFrame {
                     name = new SimpleDateFormat("yyy-mm-dd-hh-mm-ss").format(new Date());
                 }
                 //Write to file
-                    Imgcodecs.imwrite("images/" + name + ".jpg", image);
+                Imgcodecs.imwrite("images/" + name + ".jpg", image);
                 System.out.println("Thành công");
                 clicked = false;
             }

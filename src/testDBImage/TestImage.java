@@ -10,7 +10,8 @@ import java.io.Serializable;
  *
  * @author ppolo
  */
-public class TestImage implements Serializable{
+public class TestImage implements Serializable {
+
     private int id;
     private byte[] anh;
 
@@ -37,5 +38,5 @@ public class TestImage implements Serializable{
     public void setAnh(byte[] anh) {
         this.anh = anh;
     }
-    
+
 }
