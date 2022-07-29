@@ -33,15 +33,14 @@ public class ReadQrCode {
                 hintMap);
         return qrCodeResult.getText();
     }
-    
+
     public static void main(String[] args) throws IOException, FileNotFoundException, NotFoundException {
-        
+
         Map<EncodeHintType, ErrorCorrectionLevel> hashMap
-            = new HashMap<EncodeHintType,
-                          ErrorCorrectionLevel>();
-        
+                = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
+
         hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
-        
+
         System.out.println(readQRCode("D:\\FPTPolytechnic\\1_Spring22\\MOB1023\\Test1\\test\\TestQRCode.png",
                 "UTF-8", hashMap));
     }
