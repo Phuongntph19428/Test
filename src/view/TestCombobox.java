@@ -4,6 +4,9 @@
  */
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author ppolo
@@ -13,16 +16,24 @@ public class TestCombobox extends javax.swing.JFrame {
     /**
      * Creates new form TestCombobox
      */
+    
+    private int curent_page = 1;
+    private List<String> _lstCb;
+    
     public TestCombobox() {
         initComponents();
-        loadCombobox();
+        _lstCb = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) {
+            _lstCb.add("item " + i);
+        }
+        loadCombobox(1);
     }
 
-    private void loadCombobox() {
-        for (int i = 0; i < 10000; i++) {
-            jComboBox1.addItem("item " + i);
+    private void loadCombobox(int page) {
+        jComboBox1.removeAllItems();
+        for (int i = (page-1) * 10; i < page * 20; i++) {
+            jComboBox1.addItem(_lstCb.get(i));
         }
-        System.out.println(jComboBox1.getItemCount());
     }
 
     /**
@@ -38,10 +49,11 @@ public class TestCombobox extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jComboBox1.setMaximumRowCount(10);
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+        jComboBox1.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
+            public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
+                jComboBox1MouseWheelMoved(evt);
             }
         });
 
@@ -50,24 +62,29 @@ public class TestCombobox extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(98, 98, 98)
+                .addGap(129, 129, 129)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(124, 124, 124)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void jComboBox1MouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_jComboBox1MouseWheelMoved
+         int notches = evt.getWheelRotation();
+         if(notches < 0){
+             System.out.println("mouse whell moved down" + notches);
+         }else{
+             System.out.println("Mouse whell moved up");
+         }
+    }//GEN-LAST:event_jComboBox1MouseWheelMoved
 
     /**
      * @param args the command line arguments

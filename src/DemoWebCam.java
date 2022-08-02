@@ -53,46 +53,46 @@ public class DemoWebCam extends javax.swing.JFrame {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         VideoCapture capture = new VideoCapture(0);
         Mat image = new Mat();
-        byte[] imageData;
-        while (true) {
-            try {
-                capture.read(image);
-
-                final MatOfByte buf = new MatOfByte();
-                Imgcodecs.imencode(".jpg", image, buf);
-
-                imageData = buf.toArray();
-                ImageIcon icon = new ImageIcon(imageData);
-                this.screen.setIcon(icon);
-
-                InputStream is = new ByteArrayInputStream(imageData);
-                BufferedImage bf = ImageIO.read(is);
-
-                BinaryBitmap binaryBitmap
-                        = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(bf)));
-
-                Result result = new MultiFormatReader().decode(binaryBitmap);
-                System.out.println(result);
-                if (result != null) {
-                    this.dispose();
-                }
-
-                if (clicked) {
-                    String name = JOptionPane.showInputDialog(this, "Enter the image name");
-                    if (name == null) {
-                        name = new SimpleDateFormat("yyy-mm-dd-hh-mm-ss").format(new Date());
-                    }
-                    //Write to file
-                    Imgcodecs.imwrite("images/" + name + ".jpg", image);
-                    System.out.println("Thành công");
-                    clicked = false;
-                }
-            } catch (IOException ex) {
-
-            } catch (NotFoundException ex) {
-
-            }
-        }
+//        byte[] imageData;
+//        while (true) {
+//            try {
+//                capture.read(image);
+//
+//                MatOfByte buf = new MatOfByte();
+//                Imgcodecs.imencode(".jpg", image, buf);
+//
+//                imageData = buf.toArray();
+//                ImageIcon icon = new ImageIcon(imageData);
+//                this.screen.setIcon(icon);
+//
+//                InputStream is = new ByteArrayInputStream(imageData);
+//                BufferedImage bf = ImageIO.read(is);
+//
+//                BinaryBitmap binaryBitmap
+//                        = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(bf)));
+//
+//                Result result = new MultiFormatReader().decode(binaryBitmap);
+//                System.out.println(result);
+//                if (result != null) {
+//                    this.dispose();
+//                }
+//
+//                if (clicked) {
+//                    String name = JOptionPane.showInputDialog(this, "Enter the image name");
+//                    if (name == null) {
+//                        name = new SimpleDateFormat("yyy-mm-dd-hh-mm-ss").format(new Date());
+//                    }
+//                    //Write to file
+//                    Imgcodecs.imwrite("images/" + name + ".jpg", image);
+//                    System.out.println("Thành công");
+//                    clicked = false;
+//                }
+//            } catch (IOException ex) {
+//
+//            } catch (NotFoundException ex) {
+//
+//            }
+//        }
     }
 
     /**

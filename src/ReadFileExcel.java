@@ -31,7 +31,7 @@ public class ReadFileExcel {
         Iterator<Row> itr = sheet.iterator();
         itr.next();
         while (itr.hasNext()) {
-            Row row = itr.next();
+            Row row = itr.next();            
             Iterator<Cell> cellIterator = row.cellIterator();
 
             while (cellIterator.hasNext()) {
@@ -46,6 +46,7 @@ public class ReadFileExcel {
                         break;
                     default:
                 }
+                
             }
             System.out.println("");
         }  //object of the class  
